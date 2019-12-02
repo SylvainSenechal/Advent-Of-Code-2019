@@ -1,6 +1,7 @@
 use std::io;
 use std::fs::File;
 use std::io::Read;
+use std::time::SystemTime;
 
 fn read_input() -> Result<Vec<i32>, io::Error> {
     let mut content = String::new();
@@ -46,9 +47,10 @@ fn main() {
         Ok(val) => val,
         Err(e) => panic!("{:?}", e),
     };
-
+    let now = SystemTime::now();
     let result1 = part1(&content);
     let result2 = part2(&content);
     println!("{:?}", result1);
     println!("{:?}", result2);
+    println!("{:?}", now.elapsed());
 }
